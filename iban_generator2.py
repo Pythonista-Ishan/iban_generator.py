@@ -2,6 +2,7 @@ import tkinter as tk
 import random
 import os
 
+print("For Educational Purpose only") # Data used in this code is not owned by the owner and is only used for educational purpose 
 # File to store generated account numbers and IBANs
 DATA_FILE = "generated_account_number_and_IBAN.txt"
 
@@ -41,10 +42,10 @@ def calculate_check_digits(iban):
 
 def generate_iban():
     """Generate a new unique IBAN."""
-    sort_code = "248652"
+    sort_code = "040344"
     country_code = "GB"
-    bank_identifier_code = "WEST"
-    additional_number = "12"
+    bank_identifier_code = "PAYR"
+    additional_number = "00"
 
     existing_data = load_existing_data()
     
@@ -58,7 +59,7 @@ def generate_iban():
         if total % 10 == 0:
             break
     
-    iban_without_check_digits = f"{country_code}{bank_identifier_code}{sort_code}{unique_number}{additional_number}"
+    iban_without_check_digits = f"{bank_identifier_code}{sort_code}{unique_number}{country_code}{additional_number}"
     check_digits = calculate_check_digits(iban_without_check_digits)
     
     iban = f"{country_code}{check_digits}{bank_identifier_code}{sort_code}{unique_number}"
